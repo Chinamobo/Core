@@ -20,19 +20,13 @@
 }
 
 - (BOOL)isSameDayWithDate:(NSDate *)date {
-    if (!date) return false;
-
     NSDateComponents *target = [[NSCalendar currentCalendar] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:date];
     NSDateComponents *source = [[NSCalendar currentCalendar] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:self];
     return [target isEqual:source];
 }
 
 //! ref: http://stackoverflow.com/a/4739650/945906
-+ (NSInteger)daysBetweenDate:(NSDate *)fromDateTime andDate:(NSDate *)toDateTime {
-    if (!fromDateTime && !toDateTime) return 0;
-    NSParameterAssert(fromDateTime != nil);
-    NSParameterAssert(toDateTime != nil);
-    
++ (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime {
     NSDate *fromDate;
     NSDate *toDate;
     
