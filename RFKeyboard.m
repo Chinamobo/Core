@@ -1,6 +1,6 @@
 
 #import "RFKeyboard.h"
-
+#import "UIViewController+RFKit.h"
 @interface RFKeyboard () <
     UIGestureRecognizerDelegate
 >
@@ -89,10 +89,14 @@
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
-    if ([touch.view isMemberOfClass:[UIView class]]) {
-        return YES;
-    }
-    
+//    if ([touch.view isMemberOfClass:[UIView class]]) {
+//        return YES;
+//    }
+//    
+//    return NO;
+    dispatch_after_seconds(0, ^{
+        [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+    });
     return NO;
 }
 
